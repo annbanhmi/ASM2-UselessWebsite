@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html {
+	font-size: .5vw;
+}
+body {
+	background: #fcf0e1;
+	color: #322f27;
+	font-family: 'Raleway', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+main {
+	width: 183rem;
+	height: 86.5rem;
+	margin: 3rem auto 12rem;
+	position: relative;
+}
+footer {
+	text-align: center;
+	margin: 0 auto 12rem;
+}
+h1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 8rem;
+	margin: 0 0 1rem 0;
+	padding: 0;
+}
+h2 {
+	font-family: 'Raleway', sans-serif;
+	font-feature-settings: "c2sc", "smcp";
+	font-size: 7rem;
+	font-weight: normal;
+	line-height: 7rem;
+	margin: 0;
+	padding: 0;
+}
+h3 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 12rem;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+h5{
+	text-align: center;
+	font-size: 5rem;
+	color: #7b979f;
+	line-height: 10vh;
+	font-weight:400;
+	
+}
+a {
+	color: #322f27;
+}
+a.none {
+	text-decoration: none;
+}
+a.ul:hover {
+	text-decoration: underline;
+}
+img {
+	width: max-content;
+}
+#rock, #paper, #scissors, #score  {
+	cursor: pointer;
+	height: 78rem;
+	margin: 0 4.5rem;
+	position: absolute;
+	top: 0;
+}
+#rock{
+	left: -50rem;
+}
+#paper, #score {
+	left: 50rem;
+}
+#paper.left{
+	left: -60rem;
+}
+#score {
+	align-items: center;
+	cursor: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 52rem;
+}
+#scissors {
+	left: 140rem;
+}
+.bounce, .shrink, .winBounce, .winShrink {
+	animation-duration: .33s;
+	animation-iteration-count: 1;
+	animation-name: bounce;
+	animation-timing-function: linear;
+}
+.winBounce, .winShrink {
+	animation-iteration-count: 2;
+}
+.shrink, .winShrink {
+	animation-name: shrink;
+}
+.fadeOut, .fadeIn {
+	opacity: 0;
+	animation-name: fadeOut;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .66s;
+}
+.fadeIn {
+	opacity: 1;
+	animation-name: fadeIn;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .66s;
+}
+.slide {
+	animation-name: slide;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	animation-duration: .66s;
+}
+#paper.slide {
+	left: -60rem;
+}
+@keyframes bounce {
+	0%	{transform: translateY(0);}
+	50%  {transform: translateY(-3rem);}
+	100% {transform: translateY(0);}
+}	
+@keyframes shrink {
+	0%	{transform: scale(1);}
+	50%  {transform: scale(.75);}
+	100% {transform: scale(1);}
+}
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes slide {
+	0% {left: 61rem;}
+	100% {left:0;}
+}
+
+@media only screen and (min-width: 800px) {
+	html {
+		font-size: 4px;
+	}
+	#ad {
+		margin-left: auto;
+		margin-right: auto;
+		min-height: 90px;
+		width: 728px;
+	}
+}

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rock-Paper-Scissors Game</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body onload="alertWindow()">
+        <h5> <i>Click the selected image to play a classic game of Rock-Paper-Scissors!</i></h5>
+		<main id="main">
+        <img id="paper" src="img/paper.png" alt="Paper">
+		<img id="rock" src="img/rock.png" alt="Rock">
+		<img id="scissors" src="img/scissors.png" alt="Scissors">
+	    </main>
+
+        <script>
+
+            //When the page is loaded, a "Hello" message is alerted to the screen
+            function alertWindow() {
+                alert("Hi! Welcome to @annbanhmi's useless site =)");
+            }
+          
+            // 1. Declare Variables
+            var paper = document.getElementById('paper');
+            var rock = document.getElementById('rock');
+            var scissors = document.getElementById('scissors');
+
+            // 2. Define Functions
+            function rel() {
+                // Remove event listeners and change cursor style
+                rock.removeEventListener('click', rockFunc);
+                rock.style.cursor = 'auto';
+                
+                paper.removeEventListener('click', paperFunc);
+                paper.style.cursor = 'auto';
+               
+                scissors.removeEventListener('click', scissorsFunc);
+                scissors.style.cursor = 'auto';
+            }
+
+            function rps() {
+                // Randomly select 'rock', 'paper', or 'scissors'
+                var arrStr = ['rock', 'paper', 'scissors'];
+                var random = arrStr[Math.floor(Math.random() * arrStr.length)];
+                return random;
+            }
+
+            function score(result) {
+                // Calculate the score and display a message
+                var message;
+
+                if (result == 'win') {
+                    message = 'You Win!';
+                    score = score + 1;
+                } else if (result == 'lose') {
+                    score = score - 1;
+                    message = 'You Lost.';
+                } else {
+                    message = 'You Tied.';
+                }
+
+                setTimeout(function() {
+                    // Display the score message
+                    var div = document.createElement('div');
+                    div.setAttribute('class', 'fadeIn');
+                    div.setAttribute('id', 'score');
+                    div.innerHTML = '<h3><a href="index.html" class="none">' + message + '</a></h3><h5><a href="index.html" class="none ul">Play Again?</a></h5>';
+                    document.getElementById('main').appendChild(div);
+                }, 660);
+            }
+
+            // 3. Assign Listeners
+
+            // Rock function & appear/display/disappear set up
+            var rockFunc = function(e) {
+                e.preventDefault();
+                rel();
+                var random = rps();
+                rock.classList.add('bounce');
+                paper.classList.add('fadeOut');
+                scissors.classList.add('fadeOut');
+                setTimeout(function() {
+                    scissors.src = 'img/' + random + '.png';
+                    if (random == 'rock') {
+                        score('tie');
+                    } else if (random == 'paper') {
+                        score('lose');
+                    } else {
+                        score('win');
+                    }
+                    scissors.classList.add('fadeIn');
+                }, 1000);
+                setTimeout(function() {
+                    if (random == 'paper') { // lose appearance setup
+                        scissors.classList.remove('fadeOut');
+                        scissors.classList.remove('fadeIn');
+                        scissors.classList.add('winBounce');
+                    }
+                    if (random == 'scissors') { // win appearance setup
+                        rock.classList.remove('bounce');
+                        void rock.offsetWidth;
+                        rock.classList.add('winBounce');
+                    }
+                    if (random == 'rock') { //tie appearance setup
+                        rock.classList.remove('bounce');
+                        void rock.offsetWidth;
+                        scissors.classList.remove('fadeOut');
+                        scissors.classList.remove('fadeIn');
+                        rock.classList.add('bounce');
+                        scissors.classList.add('bounce');
+                    }
+                }, 1660);
+            };
+            rock.addEventListener('click', rockFunc);
+
+            // Paper function & appear/display/disappear set up
+            var paperFunc = function(e) {
+                e.preventDefault();
+                rel();
+                var random = rps();
+                paper.classList.add('bounce');
+                rock.classList.add('fadeOut');
+                scissors.classList.add('fadeOut');
+                setTimeout(function() {
+                    paper.classList.add('slide');
+                }, 500);
+                setTimeout(function() {
+                    scissors.src = 'img/' + random + '.png';
+                    if (random == 'rock') {
+                        score('win');
+                    } else if (random == 'paper') {
+                        score('tie');
+                    } else {
+                        score('lose');
+                    }
+                    scissors.classList.add('fadeIn');
+                }, 1500);
+                setTimeout(function() {
+                    if (random == 'scissors') { // lose appearance setup
+                        scissors.classList.remove('fadeOut');
+                        scissors.classList.remove('fadeIn');
+                        scissors.classList.add('winBounce');
+                    }
+                    if (random == 'rock') { // win appearance setup
+                        paper.classList.remove('bounce');
+                        paper.classList.add('left');
+                        paper.classList.remove('slide');
+                        void paper.offsetWidth;
+                        paper.classList.add('winBounce');
+                    }
+                    if (random == 'paper') { //tie appearance setup
+                        paper.classList.remove('bounce');
+                        paper.classList.add('left');
+                        paper.classList.remove('slide');
+                        void paper.offsetWidth;
+                        scissors.classList.remove('fadeOut');
+                        scissors.classList.remove('fadeIn');
+                        paper.classList.add('bounce');
+                        scissors.classList.add('bounce');
+                    }
+                }, 2120);
+            };
+            paper.addEventListener('click', paperFunc);
+
+            // Scissors function & appear/display/disappear set up
+            var scissorsFunc = function(e) {
+                e.preventDefault();
+                rel();
+                var random = rps();
+                scissors.classList.add('bounce');
+                paper.classList.add('fadeOut');
+                rock.classList.add('fadeOut');
+                setTimeout(function() {
+                    rock.src = 'img/' + random + '.png';
+                    if (random == 'rock') {
+                        score('lose');
+                    } else if (random == 'paper') {
+                        score('win');
+                    } else {
+                        score('ties');
+                    }
+                    rock.classList.add('fadeIn');
+                }, 1000);
+                setTimeout(function() {
+                    if (random == 'rock') { // lose appearance setup
+                        rock.classList.remove('fadeOut');
+                        rock.classList.remove('fadeIn');
+                        rock.classList.add('winBounce');
+                    }
+                    if (random == 'paper') { // win appearance setup
+                        scissors.classList.remove('bounce');
+                        void scissors.offsetWidth;
+                        scissors.classList.add('winBounce');
+                    }
+                    if (random == 'scissors') { //tie appearance setup
+                        scissors.classList.remove('bounce');
+                        void scissors.offsetWidth;
+                        rock.classList.remove('fadeOut');
+                        rock.classList.remove('fadeIn');
+                        scissors.classList.add('bounce');
+                        rock.classList.add('bounce');
+                    }
+                }, 1660);
+            };
+            scissors.addEventListener('click', scissorsFunc);
+
+        </script>
+
+
+	
+	<footer>
+       
+		<h1>Rock-Paper-Scissors Game</h1>
+		<h2>What to do when you feel bored 2023 <a href="https://www.instagram.com/annwithapen/" class="none ul">by @annbanhmi</a><br /></h2>
+	</footer>
+</body>
+</html>
