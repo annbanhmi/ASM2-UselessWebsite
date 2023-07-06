@@ -1,161 +1,174 @@
+/* Importing the Raleway font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* Styling for the <html> element */
 html {
-	font-size: .5vw;
+	font-size: .5vw; /* Setting the font size to 0.5% of the viewport width */
 }
+
+/* Styling for the <body> element */
 body {
-	background: #fcf0e1;
-	color: #322f27;
-	font-family: 'Raleway', sans-serif;
-	margin: 0;
-	padding: 0;
+	background: #fcf0e1; /* Setting the background color to #fcf0e1 */
+	color: #322f27; /* Setting the text color to #322f27 */
+	font-family: 'Raleway', sans-serif; /* Applying the 'Raleway' font to the text */
+	margin: 0; /* Removing margin */
+	padding: 0; /* Removing padding */
 }
+
+/* Styling for the <main> element */
 main {
-	width: 183rem;
-	height: 86.5rem;
-	margin: 3rem auto 12rem;
-	position: relative;
+	width: 183rem; /* Setting the width to 183rem */
+	height: 86.5rem; /* Setting the height to 86.5rem */
+	margin: 3rem auto 12rem; /* Setting margin-top to 3rem, margin-bottom to 12rem, and horizontally centering the element */
+	position: relative; /* Setting the position to relative */
 }
+
+/* Styling for the <footer> element */
 footer {
-	text-align: center;
-	margin: 0 auto 12rem;
+	text-align: center; /* Aligning the text to the center */
+	margin: 0 auto 12rem; /* Setting margin-top to 0, margin-bottom to 12rem, and horizontally centering the element */
 }
+
+/* Styling for <h1> elements */
 h1 {
-	font-family: 'Raleway', sans-serif;
-	font-size: 8rem;
-	margin: 0 0 1rem 0;
-	padding: 0;
+	font-family: 'Raleway', sans-serif; /* Applying the 'Raleway' font to the text */
+	font-size: 8rem; /* Setting the font size to 8rem */
+	margin: 0 0 1rem 0; /* Setting margin-bottom to 1rem */
+	padding: 0; /* Removing padding */
 }
+
+/* Styling for <h2> elements */
 h2 {
-	font-family: 'Raleway', sans-serif;
-	font-feature-settings: "c2sc", "smcp";
-	font-size: 7rem;
-	font-weight: normal;
-	line-height: 7rem;
-	margin: 0;
-	padding: 0;
+	font-family: 'Raleway', sans-serif; /* Applying the 'Raleway' font to the text */
+	font-feature-settings: "c2sc", "smcp"; /* Applying font feature settings */
+	font-size: 7rem; /* Setting the font size to 7rem */
+	font-weight: normal; /* Setting the font weight to normal */
+	line-height: 7rem; /* Setting the line height to 7rem */
+	margin: 0; /* Removing margin */
+	padding: 0; /* Removing padding */
 }
+
+/* Styling for <h3> elements */
 h3 {
-	font-family: 'Raleway', sans-serif;
-	font-size: 12rem;
-	font-weight: normal;
-	margin: 0;
-	padding: 0;
+	font-family: 'Raleway', sans-serif; /* Applying the 'Raleway' font to the text */
+	font-size: 12rem; /* Setting the font size to 12rem */
+	font-weight: normal; /* Setting the font weight to normal */
+	margin: 0; /* Removing margin */
+	padding: 0; /* Removing padding */
 }
 
-h5{
-	text-align: center;
-	font-size: 5rem;
-	color: #7b979f;
-	line-height: 10vh;
-	font-weight:400;
-	
+/* Styling for <h5> elements */
+h5 {
+	text-align: center; /* Aligning the text to the center */
+	font-size: 5rem; /* Setting the font size to 5rem */
+	color: #7b979f; /* Setting the text color to #7b979f */
+	line-height: 10vh; /* Setting the line height to 10vh */
+	font-weight: 400; /* Setting the font weight to 400 */
 }
+
+/* Styling for <a> elements */
 a {
-	color: #322f27;
-}
-a.none {
-	text-decoration: none;
-}
-a.ul:hover {
-	text-decoration: underline;
-}
-img {
-	width: max-content;
-}
-#rock, #paper, #scissors, #score  {
-	cursor: pointer;
-	height: 78rem;
-	margin: 0 4.5rem;
-	position: absolute;
-	top: 0;
-}
-#rock{
-	left: -50rem;
-}
-#paper, #score {
-	left: 50rem;
-}
-#paper.left{
-	left: -60rem;
-}
-#score {
-	align-items: center;
-	cursor: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 52rem;
-}
-#scissors {
-	left: 140rem;
-}
-.bounce, .shrink, .winBounce, .winShrink {
-	animation-duration: .33s;
-	animation-iteration-count: 1;
-	animation-name: bounce;
-	animation-timing-function: linear;
-}
-.winBounce, .winShrink {
-	animation-iteration-count: 2;
-}
-.shrink, .winShrink {
-	animation-name: shrink;
-}
-.fadeOut, .fadeIn {
-	opacity: 0;
-	animation-name: fadeOut;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: .66s;
-}
-.fadeIn {
-	opacity: 1;
-	animation-name: fadeIn;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: .66s;
-}
-.slide {
-	animation-name: slide;
-	animation-iteration-count: 1;
-	animation-timing-function: linear;
-	animation-duration: .66s;
-}
-#paper.slide {
-	left: -60rem;
-}
-@keyframes bounce {
-	0%	{transform: translateY(0);}
-	50%  {transform: translateY(-3rem);}
-	100% {transform: translateY(0);}
-}	
-@keyframes shrink {
-	0%	{transform: scale(1);}
-	50%  {transform: scale(.75);}
-	100% {transform: scale(1);}
-}
-@keyframes fadeOut {
-	0% {opacity: 1;}
-	100% {opacity: 0;}
-}
-@keyframes fadeIn {
-	0% {opacity: 0;}
-	100% {opacity: 1;}
-}
-@keyframes slide {
-	0% {left: 61rem;}
-	100% {left:0;}
+	color: #322f27; /* Setting the text color to #322f27*/
+
 }
 
+/* Styling for <a> elements with class "none" */
+a.none {
+	text-decoration: none; /* Removing text decoration (underline, etc.) */
+}
+
+/* Styling for <a> elements with class "ul" when hovered */
+a.ul:hover {
+	text-decoration: underline; /* Adding underline when hovered */
+}
+
+/* Styling for <img> elements */
+img {
+	width: max-content; /* Setting the width to fit the content */
+}
+
+/* Styling for elements with IDs "rock", "paper", "scissors", and "score" */
+#rock, #paper, #scissors, #score {
+	cursor: pointer; /* Changing the cursor to a pointer */
+	height: 78rem; /* Setting the height to 78rem */
+	margin: 0 4.5rem; /* Setting margin-left and margin-right to 4.5rem */
+	position: absolute; /* Setting the position to absolute */
+	top: 0; /* Positioning the elements at the top */
+}
+
+/* Styling for element with ID "rock" */
+#rock {
+	left: -50rem; /* Positioning the element to the left by 50rem */
+}
+
+/* Styling for elements with IDs "paper" and "score" */
+#paper, #score {
+	left: 50rem; /* Positioning the elements to the right by 50rem */
+}
+
+/* Styling for element with ID "paper" and class "left" */
+#paper.left {
+	left: -60rem; /* Positioning the element to the left by 60rem */
+}
+
+/* Styling for element with ID "scissors" */
+#scissors {
+	left: 140rem; /* Positioning the element to the right by 140rem */
+}
+
+/* Styling for elements with classes "bounce", "shrink", "winBounce", and "winShrink" */
+.bounce, .shrink, .winBounce, .winShrink {
+	animation-duration: .33s; /* Setting the duration of the animation to 0.33s */
+	animation-iteration-count: 1; /* Setting the iteration count of the animation to 1 */
+	animation-name: bounce; /* Assigning the animation named "bounce" */
+	animation-timing-function: linear; /* Setting the timing function of the animation to linear */
+}
+
+/* Styling for elements with classes "winBounce" and "winShrink" */
+.winBounce, .winShrink {
+	animation-iteration-count: 2; /* Setting the iteration count of the animation to 2 */
+}
+
+/* Styling for elements with classes "shrink" and "winShrink" */
+.shrink, .winShrink {
+	animation-name: shrink; /* Assigning the animation named "shrink" */
+}
+
+/* Styling for elements with classes "fadeOut" and "fadeIn" */
+.fadeOut, .fadeIn {
+	opacity: 0; /* Setting the opacity to 0 */
+	animation-name: fadeOut; /* Assigning the animation named "fadeOut" */
+	animation-iteration-count: 1; /* Setting the iteration count of the animation to 1 */
+	animation-timing-function: ease-in; /* Setting the timing function of the animation to ease-in */
+	animation-duration: .66s; /* Setting the duration of the animation to 0.66s */
+}
+
+/* Styling for elements with class "fadeIn" */
+.fadeIn {
+	opacity: 1; /* Setting the opacity to 1 */
+	animation-name: fadeIn; /* Assigning the animation named "fadeIn" */
+	animation-iteration-count: 1; /* Setting the iteration count of the animation to 1 */
+	animation-timing-function: ease-in; /* Setting the timing function of the animation to ease-in */
+	animation-duration: .66s; /* Setting the duration of the animation to 0.66s */
+}
+
+/* Styling for elements with class "slide" */
+.slide {
+	animation-name: slide; /* Assigning the animation named "slide" */
+	animation-iteration-count: 1; /* Setting the iteration count of the animation to 1 */
+	animation-timing-function: linear; /* Setting the timing function of the animation to linear */
+	animation-duration: .66s; /* Setting the duration of the animation to 0.66s */
+}
+
+/* Styling for element with ID "paper" and class "slide" */
+#paper.slide {
+	left: -60rem; /* Positioning the element to the left by 60rem */
+}
+
+/* Media query for screens with a minimum width of 800px */
 @media only screen and (min-width: 800px) {
 	html {
-		font-size: 4px;
+		font-size: 4px; /* Changing the font size to 4px */
 	}
-	#ad {
-		margin-left: auto;
-		margin-right: auto;
-		min-height: 90px;
-		width: 728px;
-	}
+
 }
