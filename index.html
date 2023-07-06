@@ -2,21 +2,44 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.,minmum-scale=1">
- <title>Rock-Paper-Scissors Game</title>
- <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.,minmum-scale=1">
+    <title>Rock-Paper-Scissors Game</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body onload="alertWindow()">
-        <h5> <i>Click the selected image to play a classic game of Rock-Paper-Scissors!</i></h5>
-		<main id="main">
-        <img id="paper" src="img/paper.png" alt="Paper">
-		<img id="rock" src="img/rock.png" alt="Rock">
-		<img id="scissors" src="img/scissors.png" alt="Scissors">
-	    </main>
+<body onload="alertWindow()"> <!--whenever the page reload, there will be an allert message-->
+        <!--a h5 text size to guide people where to click to start playing-->
+        <h5 id="changing-text"><i>Click the selected image to play a classic game of Rock-Paper-Scissors!</i></h5>
+ 
+        <main id="main"> <!--main id area-->
+        <img id="paper" src="img/paper.png" alt="Paper"> <!--add image of paper-->
+        <img id="rock" src="img/rock.png" alt="Rock"> <!--add image of rock-->
+        <img id="scissors" src="img/scissors.png" alt="Scissors"> <!--add image of scissors-->
+        </main>
 
         <script>
+            function changeText() {
+            var h5Element = document.getElementById('changing-text'); // Get the HTML element with the id 'changing-text' and store it in the variable 'h5Element'
+            var text = h5Element.textContent; // Get the current text content of the 'h5Element' and store it in the variable 'text'
+
+            if (text === "Still don't know how to play?") { // Check if the text content is "Still don't know how to play?"
+                h5Element.textContent = "See the 3 images below? Just click whatever you like"; // If true, change the text content of 'h5Element' to "See the 3 images below? Just click whatever you like"
+            } else {
+                h5Element.textContent = "Still don't know how to play?"; // If false, change the text content of 'h5Element' back to "Still don't know how to play?"
+            }
+            }
+
+            function startChangingText() {
+                var interval = 2000; // Time interval in milliseconds
+                var numIterations = 5; // Number of times to execute the changeText function
+
+                for (var i = 0; i < numIterations; i++) { // Iterate 'i' from 0 to 'numIterations' - 1
+                    setTimeout(changeText, interval * i); // Call the 'changeText' function after a delay of 'interval' multiplied by the current value of 'i' (creating increasing delays)
+                }
+            }
+
+            startChangingText(); // Start the process of changing the text content by calling the 'startChangingText' function
 
             //When the page is loaded, a "Hello" message is alerted to the screen
             function alertWindow() {
@@ -24,39 +47,47 @@
             }
           
             // 1. Declare Variables
-            var paper = document.getElementById('paper');
-            var rock = document.getElementById('rock');
-            var scissors = document.getElementById('scissors');
+            var paper = document.getElementById('paper'); //declare element paper
+            var rock = document.getElementById('rock'); //declare element rock
+            var scissors = document.getElementById('scissors'); //declare element scissors
 
             // 2. Define Functions
             function rel() {
                 // Remove event listeners and change cursor style
-                rock.removeEventListener('click', rockFunc);
-                rock.style.cursor = 'auto';
+                rock.removeEventListener('click', rockFunc); // is removing the event listener from the rock element of HTML, specifically the click event, and the function rockFunc will no longer be executed when that element is clicked.
+                rock.style.cursor = 'auto'; //instructing the browser to set the cursor style for the rock element to the default style determined by the browser itself.
                 
-                paper.removeEventListener('click', paperFunc);
-                paper.style.cursor = 'auto';
+                paper.removeEventListener('click', paperFunc); //similar function as line 32 but with paper element of HTML
+                paper.style.cursor = 'auto'; //similar function as line 33 but with paper element of HTML
                
-                scissors.removeEventListener('click', scissorsFunc);
-                scissors.style.cursor = 'auto';
+                scissors.removeEventListener('click', scissorsFunc); //similar function as line 32 but with scissors element of HTML
+                scissors.style.cursor = 'auto'; ////similar function as line 33 but with scissors element of HTML
             }
 
             function rps() {
-                // Randomly select 'rock', 'paper', or 'scissors'
-                var arrStr = ['rock', 'paper', 'scissors'];
-                var random = arrStr[Math.floor(Math.random() * arrStr.length)];
-                return random;
+                //selects a random item from the arrStr array, which can be 'rock', 'paper', or 'scissors', and returns that randomly selected item.
+                var arrStr = ['rock', 'paper', 'scissors']; // is an array that contains the items 'rock', 'paper', and 'scissors'.
+                var random = arrStr[Math.floor(Math.random() * arrStr.length)]; 
+                //Math.random() is a JavaScript function that generates a random decimal number between 0 (inclusive) and 1 (exclusive).
+                //arrStr.length returns the number of elements in the arrStr array, which is 3 in this case.
+                //Math.floor() is a JavaScript function that rounds down a decimal number to the nearest whole number.
+                //Math.random() * arrStr.length generates a random decimal number between 0 (inclusive) and 3 (exclusive) because arrStr.length is 3.
+                //Math.floor(Math.random() * arrStr.length) generates a random whole number between 0 and 2 (inclusive), which is then used as an index to access a random element from arrStr.
+                //The selected random item from arrStr is assigned to the variable random.
+                return random; 
+                //the random value is returned from the function.
             }
 
             function score(result) {
                 // Calculate the score and display a message
-                var message;
+                //The score function is defined with the parameter result, which is used to determine the outcome of a game or round.
+                var message; //message is declared to store a string message based on the result.
 
                 if (result == 'win') {
                     message = 'You Win!';
-                    score = score + 1;
+                    
                 } else if (result == 'lose') {
-                    score = score - 1;
+                   
                     message = 'You Lost.';
                 } else {
                     message = 'You Tied.';
@@ -76,47 +107,49 @@
 
             // Rock function & appear/display/disappear set up
             var rockFunc = function(e) {
-                e.preventDefault();
-                rel();
-                var random = rps();
-                rock.classList.add('bounce');
-                paper.classList.add('fadeOut');
-                scissors.classList.add('fadeOut');
+                e.preventDefault(); // Prevent the default behavior of the click event
+                rel(); // Call the `rel()` function (which is assumed to be defined elsewhere)
+                var random = rps(); // Call the `rps()` function (which is assumed to be defined elsewhere) and assign the result to the variable `random`
+                rock.classList.add('bounce'); // Add the CSS class 'bounce' to the element associated with the variable `rock`
+                paper.classList.add('fadeOut'); // Add the CSS class 'fadeOut' to the element associated with the variable `paper`
+                scissors.classList.add('fadeOut'); // Add the CSS class 'fadeOut' to the element associated with the variable `scissors`
                 setTimeout(function() {
-                    scissors.src = 'img/' + random + '.png';
+                    scissors.src = 'img/' + random + '.png'; // Set the 'src' attribute of the element associated with the variable `scissors` to an image URL determined by the value of the `random` variable
                     if (random == 'rock') {
-                        score('tie');
+                        score('tie'); // Call the `score` function with the argument 'tie'
                     } else if (random == 'paper') {
-                        score('lose');
+                        score('lose'); // Call the `score` function with the argument 'lose'
                     } else {
-                        score('win');
+                        score('win'); // Call the `score` function with the argument 'win'
                     }
-                    scissors.classList.add('fadeIn');
+                    scissors.classList.add('fadeIn'); // Add the CSS class 'fadeIn' to the element associated with the variable `scissors`
                 }, 1000);
                 setTimeout(function() {
                     if (random == 'paper') { // lose appearance setup
-                        scissors.classList.remove('fadeOut');
-                        scissors.classList.remove('fadeIn');
-                        scissors.classList.add('winBounce');
+                        scissors.classList.remove('fadeOut'); // Remove the CSS class 'fadeOut' from the element associated with the variable `scissors`
+                        scissors.classList.remove('fadeIn'); // Remove the CSS class 'fadeIn' from the element associated with the variable `scissors`
+                        scissors.classList.add('winBounce'); // Add the CSS class 'winBounce' to the element associated with the variable `scissors`
                     }
                     if (random == 'scissors') { // win appearance setup
-                        rock.classList.remove('bounce');
-                        void rock.offsetWidth;
-                        rock.classList.add('winBounce');
+                        rock.classList.remove('bounce'); // Remove the CSS class 'bounce' from the element associated with the variable `rock`
+                        void rock.offsetWidth; // Trigger a reflow to ensure the removal of the CSS class takes effect immediately
+                        rock.classList.add('winBounce'); // Add the CSS class 'winBounce' to the element associated with the variable `rock`
                     }
-                    if (random == 'rock') { //tie appearance setup
-                        rock.classList.remove('bounce');
-                        void rock.offsetWidth;
-                        scissors.classList.remove('fadeOut');
-                        scissors.classList.remove('fadeIn');
-                        rock.classList.add('bounce');
-                        scissors.classList.add('bounce');
+                    if (random == 'rock') { // tie appearance setup
+                        rock.classList.remove('bounce'); // Remove the CSS class 'bounce' from the element associated with the variable `rock`
+                        void rock.offsetWidth; // Trigger a reflow to ensure the removal of the CSS class takes effect immediately
+                        scissors.classList.remove('fadeOut'); // Remove the CSS class 'fadeOut' from the element associated with the variable `scissors`
+                        scissors.classList.remove('fadeIn'); // Remove the CSS class 'fadeIn' from the element associated with the variable `scissors`
+                        rock.classList.add('bounce'); // Add the CSS class 'bounce' to the element associated with the variable `rock`
+                        scissors.classList.add('bounce'); // Add the CSS class 'bounce' to the element associated with the variable `scissors`
                     }
-                }, 1660);
+                }, 1660); //the delay is set to 1660 milliseconds (or approximately 1.66 seconds).
             };
-            rock.addEventListener('click', rockFunc);
+            rock.addEventListener('click', rockFunc); //is added to the rock element, triggering the rockFunc function when the element is clicked.
 
             // Paper function & appear/display/disappear set up
+
+            //Similar to the rock set up from line 109 - line 148, just change the element to paper
             var paperFunc = function(e) {
                 e.preventDefault();
                 rel();
@@ -166,6 +199,8 @@
             paper.addEventListener('click', paperFunc);
 
             // Scissors function & appear/display/disappear set up
+
+            ////Similar to the rock set up from line 109 - line 148, just change the element to scissors
             var scissorsFunc = function(e) {
                 e.preventDefault();
                 rel();
@@ -210,11 +245,11 @@
         </script>
 
 
-	
-	<footer>
+    
+    <footer>
        
-		<h1>Rock-Paper-Scissors Game</h1>
-		<h2>What to do when you feel bored 2023 <a href="https://www.instagram.com/annwithapen/" class="none ul">by @annbanhmi</a><br /></h2>
-	</footer>
+        <h1>Rock-Paper-Scissors Game</h1>
+        <h2>What to do when you feel bored 2023 <a href="https://www.instagram.com/annwithapen/" class="none ul">by @annbanhmi</a><br /></h2>
+    </footer>
 </body>
 </html>
